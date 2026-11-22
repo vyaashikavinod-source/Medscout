@@ -14,13 +14,13 @@ export default function ChatPanel({ onAsk, loading, response, error }) {
       <form onSubmit={handleSubmit} style={styles.form}>
         <textarea
           style={styles.textarea}
-          placeholder="Describe a symptom or ask a clinical question, e.g. 'chest pain and shortness of breath after exercise'"
+          placeholder="Search a public research topic, e.g. 'exercise and sleep quality systematic review'. Do not enter identifying or private health information."
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={3}
         />
         <button type="submit" disabled={loading} style={styles.button}>
-          {loading ? "Reasoning..." : "Ask MedScout"}
+          {loading ? "Searching PubMed..." : "Search literature"}
         </button>
       </form>
 

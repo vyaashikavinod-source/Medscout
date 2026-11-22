@@ -252,3 +252,21 @@ precision.
 - **Full agent** combines deterministic safety checks, retrieval,
 reranking, and evidence-grounded reasoning into a single transparent
 pipeline while preserving the safety override mechanism.
+
+## Free live deployment
+
+`Dockerfile` builds the React interface and serves it from
+`backend.api.free_demo:app` on `$PORT`. Use Render's **free** web-service plan.
+No API key, database, model download, or paid service is required.
+
+This reduced demo performs live NCBI PubMed retrieval using E-utilities and the
+existing deterministic keyword safety rules. It returns original source
+abstracts and links, not generated medical advice. It does not load the full
+biomedical embedding/reranker pipeline or an LLM. A matched safety rule skips
+retrieval; a failed PubMed call returns an explicit unavailable result without
+inventing sources. Search terms go to NCBI; use public research topics only.
+
+Build: `cd frontend && npm ci && npm run build`.
+Run: `pip install -r requirements.demo.txt` then
+`uvicorn backend.api.free_demo:app --host 0.0.0.0 --port 8000`.
+Tests: `python -m pytest backend/tests -q`.

@@ -3,19 +3,19 @@ export default function CitationPanel({ citations }) {
     <div style={styles.card}>
       <h3 style={styles.heading}>Citations</h3>
       {citations.length === 0 ? (
-        <p style={styles.empty}>No sources retrieved yet — ask a question to see supporting evidence here.</p>
+        <p style={styles.empty}>No sources retrieved yet â€” ask a question to see supporting evidence here.</p>
       ) : (
         <ul style={styles.list}>
           {citations.map((c, i) => (
             <li key={i} style={styles.item}>
               <div style={styles.sourceRow}>
                 <span style={styles.sourceBadge}>{c.metadata?.source || "unknown"}</span>
-                <span style={styles.title}>{c.metadata?.title || "Untitled"}</span>
+                <span style={styles.title}>{c.metadata?.url ? <a href={c.metadata.url} target="_blank" rel="noopener noreferrer">{c.metadata.title || "View PubMed source"}</a> : c.metadata?.title || "Untitled"}</span>
               </div>
               <p style={styles.excerpt}>&ldquo;{truncate(c.text, 220)}&rdquo;</p>
               <div style={styles.meta}>
-                {c.metadata?.study_type && <span>{c.metadata.study_type} · </span>}
-                {c.metadata?.pub_date && <span>{c.metadata.pub_date} · </span>}
+                {c.metadata?.study_type && <span>{c.metadata.study_type} Â· </span>}
+                {c.metadata?.pub_date && <span>{c.metadata.pub_date} Â· </span>}
                 {c.section && <span>section: {c.section}</span>}
               </div>
             </li>

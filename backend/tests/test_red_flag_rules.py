@@ -46,7 +46,7 @@ def test_chest_pain_alone_does_not_trigger_acs_pattern():
 def test_partial_gi_bleed_symptom_triggers():
     result = check_red_flags("I noticed black tarry stool this morning")
     assert result.triggered
-    assert any(r["id"] == "gi_bleed_pattern" for r in result.matched_rules)
+    assert any(r["id"] == "bleeding_pattern" for r in result.matched_rules)
 
 
 def test_normalize_symptoms_handles_synonyms():

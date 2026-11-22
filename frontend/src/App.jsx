@@ -4,7 +4,7 @@ import CitationPanel from "./CitationPanel";
 import RedFlagBanner from "./RedFlagBanner";
 import ReasoningTrace from "./ReasoningTrace";
 
-const API_BASE = import.meta.env.VITE_MEDSCOUT_API_BASE || "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_MEDSCOUT_API_BASE || "";
 
 export default function App() {
   const [response, setResponse] = useState(null);
@@ -34,16 +34,17 @@ export default function App() {
     <div style={styles.page}>
       <header style={styles.header}>
         <h1 style={styles.title}>MedScout</h1>
-        <p style={styles.subtitle}>Clinical Research &amp; Triage Reasoning Agent</p>
+        <p style={styles.subtitle}>Public literature search · live PubMed retrieval · no LLM</p>
       </header>
 
-      {/* Disclaimer lives in the UI itself, not just the README — always visible. */}
+      {/* Disclaimer lives in the UI itself, not just the README â€” always visible. */}
       <div style={styles.disclaimer}>
         <strong>Research/education prototype using public literature.</strong> Not a
         diagnostic tool. Does not replace professional medical advice. If this is an
         emergency, call your local emergency number now.
       </div>
 
+      <p style={{fontSize:13,color:"#555"}}>Search terms go to NCBI PubMed. Use public research topics only, without private health information. This demo uses live retrieval and keyword rules, not an LLM or the full embedding pipeline.</p>
       {response?.red_flag?.triggered && <RedFlagBanner redFlag={response.red_flag} />}
 
       <div style={styles.body}>
@@ -81,7 +82,7 @@ const styles = {
   },
   body: {
     display: "grid",
-    gridTemplateColumns: "1.4fr 1fr",
+    gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
     gap: 20,
     alignItems: "start",
   },
