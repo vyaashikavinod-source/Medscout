@@ -74,15 +74,19 @@ def synthesize(question, citations):
                                      data=json.dumps(payload).encode(), headers={'Content-Type': 'application/json',
                                                                                 'Authorization': 'Bearer ' + key})
     started = time.monotonic()
+    stage = 'provider_request'
     try:
         with urllib.request.urlopen(request, timeout=35) as response:
             result = json.load(response)
+        stage = 'evidence_validation'
         findings = validate(json.loads(result['choices'][0]['message']['content']), citations)
         usage = result.get('usage', {})
         return findings, {'status': 'validated', 'model': model,
                           'duration_seconds': time.monotonic() - started,
                           'input_tokens': usage.get('prompt_tokens'), 'output_tokens': usage.get('completion_tokens'),
                           'validation': 'PMIDs and exact quotes checked; semantic support still needs human review'}
-    except (OSError, ValueError, KeyError, TypeError):
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
         return None, {'status': 'unavailable_or_rejected', 'model': model,
-                      'duration_seconds': time.monotonic() - started}
+                      'duration_seconds': time.monotonic() - started,
+                      'failure_stage': stage, 'error_type': type(exc).__name__,
+                      'http_status': getattr(exc, 'code', None)}

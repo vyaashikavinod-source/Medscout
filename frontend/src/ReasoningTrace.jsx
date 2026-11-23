@@ -4,6 +4,8 @@ const STEP_LABELS = {
   tool_result: "Tool result",
   llm_text: "Model output",
   model_summary: "AI summary and validation",
+  tool_error: "Tool unavailable",
+  safety_gate: "Safety gate",
 };
 
 const STEP_COLORS = {
@@ -61,7 +63,7 @@ function StepDetail({ step }) {
   if (step_type === "tool_result") {
     return (
       <div style={styles.detail}>
-        <span>{summarizeResult(detail.tool, detail.result)}</span>
+        <span>{summarizeResult(detail.tool, detail.result ?? detail)}</span>
       </div>
     );
   }
@@ -70,12 +72,28 @@ function StepDetail({ step }) {
     return <div style={styles.detail}>{truncate(detail.text, 160)}</div>;
   }
 
+  if (step_type === "model_summary") {
+    return <div style={styles.detail}>
+      <strong>{detail.status.replaceAll("_", " ")}</strong>
+      {detail.model && <span> · {detail.model}</span>}
+      {detail.duration_seconds != null && <span> · {detail.duration_seconds.toFixed(2)} s</span>}
+      {detail.input_tokens != null && <p>{detail.input_tokens} input / {detail.output_tokens} output tokens</p>}
+      {detail.validation && <p>{detail.validation}</p>}
+      {detail.failure_stage && <p>{detail.failure_stage.replaceAll("_", " ")}{detail.http_status ? ` · HTTP ${detail.http_status}` : ""}. Source retrieval remains available.</p>}
+      {detail.note && <p>{detail.note}</p>}
+    </div>;
+  }
+  if (step_type === "tool_error" || step_type === "safety_gate") {
+    return <div style={styles.detail}>{detail.tool || "Safety check"}: {detail.status || "retrieval and synthesis skipped"}</div>;
+  }
   return null;
 }
 
 function summarizeResult(tool, result) {
   if (Array.isArray(result)) return `Returned ${result.length} result(s)`;
   if (result && typeof result === "object") {
+    if ("excerpts" in result) return `${tool}: ranked ${result.excerpts} excerpts with ${result.model}`;
+    if ("records" in result) return `${tool}: ${result.records} retrieved excerpts`;
     if ("triggered" in result) return result.triggered ? "Red flag confirmed" : "No red flag";
     if ("n_distinct_sources" in result) return `Found ${result.n_distinct_sources} distinct source(s)`;
     return `Returned data from ${tool}`;

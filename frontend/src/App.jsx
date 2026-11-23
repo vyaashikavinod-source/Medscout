@@ -37,7 +37,7 @@ export default function App() {
         <p style={styles.subtitle}>Public literature search · local vector ranking · optional cited AI summary</p>
       </header>
 
-      {/* Disclaimer lives in the UI itself, not just the README â€” always visible. */}
+      {/* Disclaimer lives in the UI itself, not just the README — always visible. */}
       <div style={styles.disclaimer}>
         <strong>Research/education prototype using public literature.</strong> Not a
         diagnostic tool. Does not replace professional medical advice. If this is an

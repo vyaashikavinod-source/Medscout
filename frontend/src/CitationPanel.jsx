@@ -3,7 +3,7 @@ export default function CitationPanel({ citations }) {
     <div style={styles.card}>
       <h3 style={styles.heading}>Citations</h3>
       {citations.length === 0 ? (
-        <p style={styles.empty}>No sources retrieved yet â€” ask a question to see supporting evidence here.</p>
+        <p style={styles.empty}>No sources retrieved yet — ask a question to see supporting evidence here.</p>
       ) : (
         <ul style={styles.list}>
           {citations.map((c, i) => (
@@ -14,8 +14,8 @@ export default function CitationPanel({ citations }) {
               </div>
               <p style={styles.excerpt}>&ldquo;{truncate(c.text, 220)}&rdquo;</p>
               <div style={styles.meta}>
-                {c.metadata?.study_type && <span>{c.metadata.study_type} Â· </span>}
-                {c.metadata?.pub_date && <span>{c.metadata.pub_date} Â· </span>}
+                {c.metadata?.study_type && <span>{c.metadata.study_type} · </span>}
+                {c.metadata?.pub_date && <span>{c.metadata.pub_date} · </span>}
                 {c.section && <span>section: {c.section}</span>}
               </div>
             </li>

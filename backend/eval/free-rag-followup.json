@@ -1,0 +1,264 @@
+{
+  "evidence_type": "real_PubMed_ONNX_Gemini_requests",
+  "model": "gemini-3.5-flash-lite",
+  "runs": [
+    {
+      "question": "exercise sleep quality systematic review",
+      "duration_seconds": 25.94057870004326,
+      "result": {
+        "red_flag": {
+          "triggered": false,
+          "matched_rules": [],
+          "normalized_symptoms": []
+        },
+        "answer_text": "Retrieved 5 PubMed excerpts. Read the source abstracts and their limitations in the citation panel. These search results are not a diagnosis, consensus assessment, or personalized recommendation. No language model synthesized this response.\n\nAI summary unavailable, limited, or rejected by evidence validation; retrieval remains available.",
+        "citations": [
+          {
+            "text": "o showed significant benefits compared with control.",
+            "metadata": {
+              "source": "PubMed",
+              "title": "Effectiveness of Different Types of Physical Activity Interventions for Enhancing Sleep Quality in Older Adults: A Systematic Review and Network Meta-Analysis.",
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42976814/",
+              "pmid": "42976814"
+            },
+            "section": "Abstract",
+            "offset": 1600,
+            "retrieval_score": 0.7369627720873192,
+            "embedding_model": "MiniLM-L6-v2 \u00b7 general-purpose int8 ONNX"
+          },
+          {
+            "text": "; however, the evidence remains limited by the low number of randomized trials, heterogeneous protocols, and small sample sizes.",
+            "metadata": {
+              "source": "PubMed",
+              "title": "Effects of exercise training on the severity of sleep disorders and mental health outcomes in patients with obstructive sleep apnea and insomnia: A systematic review.",
+              "url": "https://pubmed.ncbi.nlm.nih.gov/43025379/",
+              "pmid": "43025379"
+            },
+            "section": "Abstract",
+            "offset": 1600,
+            "retrieval_score": 0.7337833721186406,
+            "embedding_model": "MiniLM-L6-v2 \u00b7 general-purpose int8 ONNX"
+          },
+          {
+            "text": "ochrane Library, ScienceDirect, Scopus, and LILACS databases. Of the 535 studies initially identified, five randomized controlled trials met the eligibility criteria, totaling 187 participants, predominantly sedentary adults and older adults. Three studies investigated individuals with OSA and two involved populations with insomnia. Intervention protocols were mainly based on structured aerobic exercise, particularly walking, performed at least three times per week at moderate to vigorous intensity. The studies reported significant reductions in symptoms of depression, anxiety, and fatigue, as well as improvements in sleep quality and daytime sleepiness. Regular aerobic exercise yields clinically relevant improvements in mental health and sleep outcomes in individuals with OSA and insomnia; however, the evidence remains limited by the low number of randomized trials, heterogeneous protocols, and small sample sizes.",
+            "metadata": {
+              "source": "PubMed",
+              "title": "Effects of exercise training on the severity of sleep disorders and mental health outcomes in patients with obstructive sleep apnea and insomnia: A systematic review.",
+              "url": "https://pubmed.ncbi.nlm.nih.gov/43025379/",
+              "pmid": "43025379"
+            },
+            "section": "Abstract",
+            "offset": 800,
+            "retrieval_score": 0.7319204223905207,
+            "embedding_model": "MiniLM-L6-v2 \u00b7 general-purpose int8 ONNX"
+          },
+          {
+            "text": "Poor sleep quality is common among older adults, affecting health and well-being. Physical activity is a promising nonpharmacological option, but the comparative effects of different exercise types remain unclear. This study compared various physical activity interventions on subjective sleep quality in older adults through network meta-analysis. A systematic search of PubMed, Embase, and Scopus identified eligible evaluating physical activity effects on sleep quality in adults aged \u226560\u00a0years. Sleep quality was measured using the Pittsburgh Sleep Quality Index. Interventions were categorized as aerobic, resistance, balance, flexibility, or multicomponent training. Bayesian network meta-analysis estimated mean differences (MDs) with 95% credible intervals (CrI). A total of 39 studies involving 3198 participants met the inclusion criteria. Balance training showed the greatest estimated improvement (MD = -2.58; 95% CrI, -3.32 to -1.83), followed by flexibility (MD = -1.70; 95% CrI, -3.90 ",
+            "metadata": {
+              "source": "PubMed",
+              "title": "Effectiveness of Different Types of Physical Activity Interventions for Enhancing Sleep Quality in Older Adults: A Systematic Review and Network Meta-Analysis.",
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42976814/",
+              "pmid": "42976814"
+            },
+            "section": "Abstract",
+            "offset": 0,
+            "retrieval_score": 0.7029108544812915,
+            "embedding_model": "MiniLM-L6-v2 \u00b7 general-purpose int8 ONNX"
+          },
+          {
+            "text": "Obstructive sleep apnea (OSA) is a chronic respiratory disorder characterized by recurrent upper airway collapse, associated with increased cardiometabolic risk and symptoms of depression and anxiety, whereas insomnia is characterized by persistent sleep difficulties and emotional and cognitive impairments. To analyze the available scientific evidence on the effects of different physical training protocols on mental health outcomes, particularly symptoms of depression and anxiety, in individuals with OSA and/or insomnia. A systematic review was conducted in accordance with PRISMA guidelines. Randomized controlled trials that investigated physical training interventions in adults with OSA and/or insomnia and assessed mental health outcomes were included. Searches were performed in PubMed, Cochrane Library, ScienceDirect, Scopus, and LILACS databases. Of the 535 studies initially identified, five randomized controlled trials met the eligibility criteria, totaling 187 participants, predom",
+            "metadata": {
+              "source": "PubMed",
+              "title": "Effects of exercise training on the severity of sleep disorders and mental health outcomes in patients with obstructive sleep apnea and insomnia: A systematic review.",
+              "url": "https://pubmed.ncbi.nlm.nih.gov/43025379/",
+              "pmid": "43025379"
+            },
+            "section": "Abstract",
+            "offset": 0,
+            "retrieval_score": 0.6617749339712935,
+            "embedding_model": "MiniLM-L6-v2 \u00b7 general-purpose int8 ONNX"
+          }
+        ],
+        "confidence": null,
+        "reasoning_trace": [
+          {
+            "step_type": "rule_check",
+            "detail": {
+              "triggered": false,
+              "matched_rules": [],
+              "normalized_symptoms": []
+            }
+          },
+          {
+            "step_type": "tool_result",
+            "detail": {
+              "tool": "ONNX vector ranking",
+              "model": "MiniLM-L6-v2 general-purpose int8",
+              "excerpts": 5
+            }
+          },
+          {
+            "step_type": "tool_result",
+            "detail": {
+              "tool": "PubMed E-utilities",
+              "records": 5
+            }
+          },
+          {
+            "step_type": "model_summary",
+            "detail": {
+              "status": "unavailable_or_rejected",
+              "model": "gemini-3.5-flash-lite",
+              "duration_seconds": 18.34978469996713,
+              "failure_stage": "provider_request",
+              "error_type": "HTTPError",
+              "http_status": 503
+            }
+          }
+        ],
+        "findings": null,
+        "synthesis": {
+          "status": "unavailable_or_rejected",
+          "model": "gemini-3.5-flash-lite",
+          "duration_seconds": 18.34978469996713,
+          "failure_stage": "provider_request",
+          "error_type": "HTTPError",
+          "http_status": 503
+        },
+        "disclaimer": "Research/education prototype. Not a diagnostic tool or medical advice. Keyword safety rules can miss emergencies; absence of a flag does not establish safety. AI source references and quotes are checked, but this does not certify the interpretation."
+      }
+    },
+    {
+      "question": "dietary fiber gut microbiome systematic review",
+      "duration_seconds": 12.122160600032657,
+      "result": {
+        "red_flag": {
+          "triggered": false,
+          "matched_rules": [],
+          "normalized_symptoms": []
+        },
+        "answer_text": "Research findings from the retrieved excerpts (AI-generated; verify against the quoted sources):\n\n[42620067] Dietary fiber supplementation showed limited and inconsistent effects on gut microbial composition in chronic kidney disease, with mostly unchanged taxa; limitations include variable study quality, inconsistent findings between human and animal trials, and lack of clear patterns based on fermentability or viscosity.\nSource quote: Dietary fiber supplementation demonstrated limited and inconsistent effects on gut microbiota composition in human studies. Inulin and resistant starch were associated with weak evidence of changes in beta diversity, but most taxa across phylum and genus levels remained unchanged",
+        "citations": [
+          {
+            "text": "Chronic kidney disease (CKD) is associated with alterations in gut microbial composition and diversity. Accordingly, dietary fiber has emerged as a promising microbiome-targeted intervention. However, the influence of fiber fermentability and viscosity remains largely understudied. To systematically evaluate the effects of dietary fiber supplementation interventions, classified by viscosity and fermentability, on gut microbial composition in CKD across human and animal studies, and to determine whether these fiber properties influence gut microbiota composition. A systematic search of PubMed, Embase, CINAHL, and Cochrane Library (through February 2026) identified randomized controlled trials and controlled animal studies assessing isolated dietary fiber in CKD. Eligible studies reported gut microbiota composition. Risk of bias was assessed with ROB-2 and SYRCLE, and an overall level of evidence (strong, moderate, weak, or inconclusive) was assigned based on study quality and consistenc",
+            "metadata": {
+              "source": "PubMed",
+              "title": "The effect of dietary fiber based on fermentability and viscosity on the gut microbiome composition in chronic kidney disease: a systematic review of experimental and clinical trials.",
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42620067/",
+              "pmid": "42620067"
+            },
+            "section": "Abstract",
+            "offset": 0,
+            "retrieval_score": 0.7362866973562958,
+            "embedding_model": "MiniLM-L6-v2 \u00b7 general-purpose int8 ONNX"
+          },
+          {
+            "text": "tailed characterization of fiber properties to clarify whether specific fibers reproducibly modulate microbial community structure.This trial was registered at PROSPERO as CRD42023483468.",
+            "metadata": {
+              "source": "PubMed",
+              "title": "The effect of dietary fiber based on fermentability and viscosity on the gut microbiome composition in chronic kidney disease: a systematic review of experimental and clinical trials.",
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42620067/",
+              "pmid": "42620067"
+            },
+            "section": "Abstract",
+            "offset": 2400,
+            "retrieval_score": 0.7304894787244868,
+            "embedding_model": "MiniLM-L6-v2 \u00b7 general-purpose int8 ONNX"
+          },
+          {
+            "text": "t microbiota composition. Risk of bias was assessed with ROB-2 and SYRCLE, and an overall level of evidence (strong, moderate, weak, or inconclusive) was assigned based on study quality and consistency of findings. Alpha and beta diversity, as well as bacterial taxa changes, were then reported according to these evidence rankings. Twenty-two studies (9 human, 13 animal) were included, comprising 236 participants and 274 animals with CKD. Dietary fiber supplementation demonstrated limited and inconsistent effects on gut microbiota composition in human studies. Inulin and resistant starch were associated with weak evidence of changes in beta diversity, but most taxa across phylum and genus levels remained unchanged, often supported by strong or weak evidence depending on the taxonomic level. Modest increases were observed in a small number of genera, including Verrucomicrobia, Akkermansia, Clostridium by inulin, Oscillospiraceae UCG-002, and Subdoligranulum by resistant starch type 2 in ",
+            "metadata": {
+              "source": "PubMed",
+              "title": "The effect of dietary fiber based on fermentability and viscosity on the gut microbiome composition in chronic kidney disease: a systematic review of experimental and clinical trials.",
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42620067/",
+              "pmid": "42620067"
+            },
+            "section": "Abstract",
+            "offset": 800,
+            "retrieval_score": 0.7243772187768752,
+            "embedding_model": "MiniLM-L6-v2 \u00b7 general-purpose int8 ONNX"
+          },
+          {
+            "text": " Modest increases were observed in a small number of genera, including Verrucomicrobia, Akkermansia, Clostridium by inulin, Oscillospiraceae UCG-002, and Subdoligranulum by resistant starch type 2 in human studies, which were not consistent across animal studies. Beta-glucan showed no significant effects on alpha or beta diversity or microbial composition. In contrast, weak evidence from animal studies suggested that beta-glucan may increase alpha diversity. Isolated dietary fiber interventions were associated with variable changes in gut microbiota composition in CKD, with limited consistency across human and animal studies, and no clear pattern based solely on fermentability or viscosity. Future studies should use standardized sequencing approaches, harmonized taxonomic reporting, and detailed characterization of fiber properties to clarify whether specific fibers reproducibly modulate microbial community structure.This trial was registered at PROSPERO as CRD42023483468.",
+            "metadata": {
+              "source": "PubMed",
+              "title": "The effect of dietary fiber based on fermentability and viscosity on the gut microbiome composition in chronic kidney disease: a systematic review of experimental and clinical trials.",
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42620067/",
+              "pmid": "42620067"
+            },
+            "section": "Abstract",
+            "offset": 1600,
+            "retrieval_score": 0.7013661592954353,
+            "embedding_model": "MiniLM-L6-v2 \u00b7 general-purpose int8 ONNX"
+          },
+          {
+            "text": "hese interventions.",
+            "metadata": {
+              "source": "PubMed",
+              "title": "Gut Microbiome-Modulating therapeutics and lipid profile in metabolic syndrome: A systematic review and meta-analysis of clinical trials.",
+              "url": "https://pubmed.ncbi.nlm.nih.gov/42413732/",
+              "pmid": "42413732"
+            },
+            "section": "Abstract",
+            "offset": 2400,
+            "retrieval_score": 0.6795267798445106,
+            "embedding_model": "MiniLM-L6-v2 \u00b7 general-purpose int8 ONNX"
+          }
+        ],
+        "confidence": null,
+        "reasoning_trace": [
+          {
+            "step_type": "rule_check",
+            "detail": {
+              "triggered": false,
+              "matched_rules": [],
+              "normalized_symptoms": []
+            }
+          },
+          {
+            "step_type": "tool_result",
+            "detail": {
+              "tool": "ONNX vector ranking",
+              "model": "MiniLM-L6-v2 general-purpose int8",
+              "excerpts": 5
+            }
+          },
+          {
+            "step_type": "tool_result",
+            "detail": {
+              "tool": "PubMed E-utilities",
+              "records": 5
+            }
+          },
+          {
+            "step_type": "model_summary",
+            "detail": {
+              "status": "validated",
+              "model": "gemini-3.5-flash-lite",
+              "duration_seconds": 7.20601359999273,
+              "input_tokens": 1018,
+              "output_tokens": 114,
+              "validation": "PMIDs and exact quotes checked; semantic support still needs human review"
+            }
+          }
+        ],
+        "findings": [
+          {
+            "pmid": "42620067",
+            "quote": "Dietary fiber supplementation demonstrated limited and inconsistent effects on gut microbiota composition in human studies. Inulin and resistant starch were associated with weak evidence of changes in beta diversity, but most taxa across phylum and genus levels remained unchanged",
+            "summary": "Dietary fiber supplementation showed limited and inconsistent effects on gut microbial composition in chronic kidney disease, with mostly unchanged taxa; limitations include variable study quality, inconsistent findings between human and animal trials, and lack of clear patterns based on fermentability or viscosity."
+          }
+        ],
+        "synthesis": {
+          "status": "validated",
+          "model": "gemini-3.5-flash-lite",
+          "duration_seconds": 7.20601359999273,
+          "input_tokens": 1018,
+          "output_tokens": 114,
+          "validation": "PMIDs and exact quotes checked; semantic support still needs human review"
+        },
+        "disclaimer": "Research/education prototype. Not a diagnostic tool or medical advice. Keyword safety rules can miss emergencies; absence of a flag does not establish safety. AI source references and quotes are checked, but this does not certify the interpretation."
+      }
+    }
+  ]
+}
