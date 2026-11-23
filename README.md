@@ -255,18 +255,32 @@ pipeline while preserving the safety override mechanism.
 
 ## Free live deployment
 
-`Dockerfile` builds the React interface and serves it from
-`backend.api.free_demo:app` on `$PORT`. Use Render's **free** web-service plan.
-No API key, database, model download, or paid service is required.
+The live demo uses `backend.api.free_demo:app`, not the full experimental pipeline above.
+It searches up to 12 live PubMed abstracts, chunks them, and ranks at most 60 excerpts
+with general-purpose MiniLM-L6-v2 int8 ONNX embeddings (384 dimensions, cosine similarity).
+This is an ephemeral candidate index, not a complete biomedical vector database.
+The model is pinned by revision and checksum during the Docker build; it is about 23 MB.
 
-This reduced demo performs live NCBI PubMed retrieval using E-utilities and the
-existing deterministic keyword safety rules. It returns original source
-abstracts and links, not generated medical advice. It does not load the full
-biomedical embedding/reranker pipeline or an LLM. A matched safety rule skips
-retrieval; a failed PubMed call returns an explicit unavailable result without
-inventing sources. Search terms go to NCBI; use public research topics only.
+An unchecked-by-default option enables Gemini 3.5 Flash-Lite research synthesis.
+Questions and excerpts are sent to Google only when selected. The server verifies
+that returned PMIDs exist and that quotations exactly match retrieved text.
+These checks do not certify the model's interpretation or clinical correctness.
+A matched keyword safety rule skips retrieval and the LLM. Failed or rejected
+model outputs fall back to source retrieval without invented findings.
+
+The approved Google project has billing disabled and no paid-provider fallback.
+`GEMINI_API_KEY` is a server secret. The app allows 10 attempted model calls per
+UTC day per running instance, with a 15-second cooldown; this counter resets on
+instance replacement. Provider quota is the external limit. Public research
+questions only: do not submit private health information.
+
+Two actual smoke runs are retained in `backend/eval/free-rag-real-runs.json`.
+Both passed PMID/quote validation. This is integration evidence, not a medical
+quality evaluation. The Docker service remains on Render's free 512 MB plan.
 
 Build: `cd frontend && npm ci && npm run build`.
 Run: `pip install -r requirements.demo.txt` then
 `uvicorn backend.api.free_demo:app --host 0.0.0.0 --port 8000`.
+Embedding setup: run `scripts/download_embedder.py` with `MEDSCOUT_EMBED_DIR`
+pointing to a writable directory; set `MEDSCOUT_EMBED_ENABLED=true`.
 Tests: `python -m pytest backend/tests -q`.

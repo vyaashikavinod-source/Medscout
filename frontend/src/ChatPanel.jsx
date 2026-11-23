@@ -2,11 +2,12 @@ import { useState } from "react";
 
 export default function ChatPanel({ onAsk, loading, response, error }) {
   const [text, setText] = useState("");
+  const [includeAI, setIncludeAI] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!text.trim() || loading) return;
-    onAsk(text.trim());
+    onAsk(text.trim(), includeAI);
   }
 
   return (
@@ -19,6 +20,7 @@ export default function ChatPanel({ onAsk, loading, response, error }) {
           onChange={(e) => setText(e.target.value)}
           rows={3}
         />
+        <label style={{fontSize:13}}><input type="checkbox" checked={includeAI} onChange={e=>setIncludeAI(e.target.checked)} /> Include a cited Gemini research summary (sends question and excerpts to Google)</label>
         <button type="submit" disabled={loading} style={styles.button}>
           {loading ? "Searching PubMed..." : "Search literature"}
         </button>

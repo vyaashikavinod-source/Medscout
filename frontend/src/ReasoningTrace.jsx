@@ -2,7 +2,8 @@ const STEP_LABELS = {
   rule_check: "Deterministic safety check",
   tool_call: "Tool call",
   tool_result: "Tool result",
-  llm_text: "Agent reasoning",
+  llm_text: "Model output",
+  model_summary: "AI summary and validation",
 };
 
 const STEP_COLORS = {
@@ -17,7 +18,7 @@ export default function ReasoningTrace({ trace }) {
     <div style={styles.card}>
       <h3 style={styles.heading}>Reasoning trace</h3>
       {trace.length === 0 ? (
-        <p style={styles.empty}>The agent's step-by-step tool calls will appear here so you can audit the decision path.</p>
+        <p style={styles.empty}>The tool calls, retrieval results and summary-validation status appear here. This is an execution trace, not hidden model reasoning.</p>
       ) : (
         <ol style={styles.list}>
           {trace.map((step, i) => (

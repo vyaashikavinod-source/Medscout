@@ -11,14 +11,14 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  async function askQuestion(question) {
+  async function askQuestion(question, includeAI) {
     setLoading(true);
     setError(null);
     try {
       const res = await fetch(`${API_BASE}/query`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question, include_ai: includeAI }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
       const data = await res.json();
@@ -34,7 +34,7 @@ export default function App() {
     <div style={styles.page}>
       <header style={styles.header}>
         <h1 style={styles.title}>MedScout</h1>
-        <p style={styles.subtitle}>Public literature search · live PubMed retrieval · no LLM</p>
+        <p style={styles.subtitle}>Public literature search · local vector ranking · optional cited AI summary</p>
       </header>
 
       {/* Disclaimer lives in the UI itself, not just the README â€” always visible. */}
@@ -44,7 +44,7 @@ export default function App() {
         emergency, call your local emergency number now.
       </div>
 
-      <p style={{fontSize:13,color:"#555"}}>Search terms go to NCBI PubMed. Use public research topics only, without private health information. This demo uses live retrieval and keyword rules, not an LLM or the full embedding pipeline.</p>
+      <p style={{fontSize:13,color:"#555"}}>Search terms go to NCBI PubMed. Optional AI summaries also send the question and selected excerpts to Google Gemini. Use public research topics only, without private health information. MiniLM vector ranking is general-purpose, not biomedical-specialized. The free AI budget is 10 requests/day per running instance, with a 15-second cooldown; instance replacement resets that counter. Google project quotas still apply.</p>
       {response?.red_flag?.triggered && <RedFlagBanner redFlag={response.red_flag} />}
 
       <div style={styles.body}>
